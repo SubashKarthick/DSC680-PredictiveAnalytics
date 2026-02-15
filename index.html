@@ -1,555 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-  <title>Subash Karthick | Predictive Analytics Portfolio</title>
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --main-bg: #1a202c;
-      --card-bg: #23272f;
-      --accent: #00c4ff;
-      --accent-dark: #3bd9d9;
-      --text: #f5f7fa;
-      --subtitle: #a0aec0;
-      --radius: 1.4rem;
-      --shadow: 0 2px 24px rgba(0,0,0,0.18);
-    }
-    * { box-sizing: border-box; }
-    body {
-      font-family: 'Inter', Arial, sans-serif;
-      background: var(--main-bg);
-      color: var(--text);
-      margin: 0;
-      padding: 0;
-      min-height: 100vh;
-    }
-    header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      z-index: 10;
-      background: linear-gradient(120deg, #1a202c, #22334a 65%, #3bd9d9);
-      box-shadow: 0 8px 36px rgba(0,0,0,0.11);
-      border-bottom-left-radius: 3rem 1.5rem;
-      border-bottom-right-radius: 3rem 1.5rem;
-      padding: 3rem 1rem 2.5rem 1rem;
-      text-align: center;
-    }
-    main {
-      margin-top: 180px;
-    }
-    .avatar {
-      width: 92px;
-      height: 92px;
-      object-fit: cover;
-      border-radius: 50%;
-      border: 4px solid var(--accent);
-      margin-bottom: 1.2rem;
-      box-shadow: 0 4px 28px rgba(0,196,255,0.11);
-    }
-    h1 {
-      font-size: 2.5rem;
-      margin: .4rem 0 0 0;
-      letter-spacing: 1px;
-      color: var(--accent);
-      font-weight: 800;
-    }
-    .subtitle {
-      font-size: 1.1rem;
-      color: var(--subtitle);
-      margin-bottom: 1.6rem;
-      font-weight: 500;
-    }
-    .tab-bar {
-      display: flex;
-      justify-content: center;
-      background: #202635;
-      border-radius: 20px;
-      margin: 1.5rem auto 1.7rem auto;
-      box-shadow: 0 1px 8px #00263d12;
-      max-width: 390px;
-    }
-    .tab-btn {
-      flex: 1;
-      padding: 1em 0;
-      font-size: 1.08em;
-      font-weight: 700;
-      border: none;
-      background: none;
-      color: var(--subtitle);
-      border-radius: 20px;
-      cursor: pointer;
-      transition: background 0.15s, color 0.14s;
-    }
-    .tab-btn.active {
-      background: var(--accent);
-      color: var(--main-bg);
-    }
-    main {
-      max-width: 1140px;
-      margin: 0 auto;
-      padding: 2rem 1rem;
-    }
-    section[hidden] { display: none !important; }
-    .filter-bar {
-      text-align: center;
-      margin-bottom: 2rem;
-    }
-    .filter-btn {
-      display: inline-block;
-      margin: 0 0.4em 0.6em 0.4em;
-      padding: 0.35em 1.3em;
-      border-radius: 14px;
-      border: 0;
-      background: var(--card-bg);
-      color: var(--accent);
-      font-weight: 600;
-      letter-spacing: .3px;
-      cursor: pointer;
-      transition: background 0.15s, color 0.15s, box-shadow 0.15s;
-      box-shadow: 0 1px 6px rgba(0,196,255,0.11);
-    }
-    .filter-btn.active, .filter-btn:hover {
-      background: var(--accent);
-      color: var(--main-bg);
-    }
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 2rem;
-    }
-    .project-card {
-      background: var(--card-bg);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      position: relative;
-      min-height: 340px;
-      transition: transform 0.18s, box-shadow 0.2s;
-    }
-    .project-card:hover {
-      transform: translateY(-8px) scale(1.025);
-      box-shadow: 0 8px 40px rgba(0,196,255,0.14);
-    }
-    .project-img {
-      width: 100%;
-      height: 158px;
-      object-fit: cover;
-      background: #0f172a;
-      display: block;
-      border-bottom: 2px solid var(--accent-dark);
-    }
-    .project-content {
-      padding: 1.2rem 1.1rem 1.3rem 1.1rem;
-      display: flex;
-      flex-direction: column;
-      flex: 1 1 auto;
-    }
-    .project-title {
-      font-size: 1.22rem;
-      color: var(--accent);
-      margin-bottom: 0.55em;
-      font-weight: 700;
-    }
-    .project-desc {
-      color: #c6c8d1;
-      margin-bottom: 0.95em;
-      font-size: 1rem;
-      flex: 1;
-    }
-    .tags {
-      margin-bottom: 0.7em;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 7px;
-    }
-    .tag {
-      background: var(--accent-dark);
-      color: #002024;
-      border-radius: 8px;
-      font-size: 0.85em;
-      font-weight: 600;
-      padding: 2px 10px;
-    }
-    .project-links {
-      margin-top: 0.45em;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6em;
-    }
-    .project-links a {
-      color: var(--accent);
-      background: #0f172a;
-      padding: 0.3em 1.2em;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 1em;
-      border: 1px solid transparent;
-      transition: background 0.17s, color 0.17s, border 0.18s;
-      min-width: 145px;
-      text-align: center;
-      white-space: nowrap;
-    }
-    .project-links a:hover {
-      background: var(--accent);
-      color: var(--main-bg);
-      border: 1px solid var(--main-bg);
-    }
-    @media (max-width: 700px) {
-      header { padding: 2.2rem 0.2rem 1.5rem 0.2rem; }
-      h1 { font-size: 1.6rem; }
-      .projects-grid { gap: 1.1rem; }
-      .project-card { min-height: 250px; }
-      .tab-bar { max-width: 97vw; }
-    }
-    @media (max-width: 480px) {
-      .project-links {
-        flex-direction: column;
-        gap: 0.4em;
-      }
-      .project-links a {
-        width: 100%;
-        min-width: unset;
-      }
-    }
-    .about-section {
-      max-width: 650px;
-      margin: 2.5em auto 0 auto;
-      background: #222a37;
-      border-radius: 1.4rem;
-      box-shadow: var(--shadow);
-      padding: 2.4em 2em 2em 2em;
-      color: #e0e6f7;
-      font-size: 1.12rem;
-      line-height: 1.7;
-    }
-    .about-section h2 {
-      color: var(--accent);
-      margin-top: 0;
-      font-size: 2rem;
-      margin-bottom: .8em;
-      font-weight: 700;
-      letter-spacing: 0.02em;
-    }
-    .about-list {
-      list-style: none;
-      padding: 0;
-      margin: 0 0 1.7em 0;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.1em 2.2em;
-      color: #93bbff;
-      font-size: 1.06em;
-    }
-    .about-list li {
-      padding-left: 1.2em;
-      position: relative;
-    }
-    .about-list li:before {
-      content: "•";
-      position: absolute;
-      left: 0;
-      color: var(--accent);
-      font-size: 1.25em;
-    }
-    .contact-btn {
-      display: inline-flex;
-      align-items: center;
-      background: var(--accent);
-      color: #1a202c;
-      font-weight: 700;
-      border-radius: 10px;
-      padding: 0.33em 1.18em;
-      margin-right: 0.6em;
-      text-decoration: none;
-      box-shadow: 0 2px 8px rgba(0,196,255,0.09);
-      border: none;
-      font-size: 1.1em;
-      transition: background 0.16s, color 0.16s, box-shadow 0.22s;
-    }
-    .contact-btn:hover {
-      background: var(--main-bg);
-      color: var(--accent);
-      border: 1px solid var(--accent);
-      box-shadow: 0 4px 18px rgba(0,196,255,0.15);
-    }
-    #particles-js {
-      position: fixed;
-      z-index: 0;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      pointer-events: none;
-    }
-    header, main, nav, footer {
-      position: relative;
-      z-index: 2;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+            margin: 0;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: cyan;
+        }
+        .project {
+            border: 1px solid cyan;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 10px 0;
+            transition: transform 0.2s;
+        }
+        .project:hover {
+            transform: scale(1.02);
+        }
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            .project {
+                padding: 10px;
+            }
+        }
+    </style>
 </head>
 <body>
-  <div id="particles-js"></div>
-
-  <header>
-    <img src="https://avatars.githubusercontent.com/u/34826605?v=4" alt="Avatar" class="avatar" />
-    <h1>Subash Karthick</h1>
-    <div class="subtitle">MSc Predictive Analytics | Data Science • ML • Statistical Modeling</div>
-  </header>
-
-  <nav class="tab-bar">
-    <button class="tab-btn active" id="projectsTab" onclick="switchTab('projects')">MSc Projects</button>
-    <button class="tab-btn" id="aboutTab" onclick="switchTab('about')">About</button>
-  </nav>
-
-  <main>
-    <section id="projectsSection">
-      <div class="filter-bar" id="filterBar"></div>
-      <section class="projects-grid" id="projectsGrid"></section>
-    </section>
-
-    <section id="aboutSection" class="about-section" hidden>
-      <h2>About Me</h2>
-      <p>
-        I'm <b>Subash Karthick</b>, a Master's student in Predictive Analytics with a passion for leveraging data-driven insights to solve real-world problems. My work combines statistical modeling, machine learning, and business intelligence to uncover patterns and predict future trends.
-      </p>
-      <p>
-        I specialize in building predictive models, analyzing economic and social trends, and developing data science solutions that drive decision-making. I'm always eager to tackle new challenges and contribute to impactful data science projects.
-      </p>
-      <ul class="about-list">
-        <li>Python, R, SQL, and Statistical Analysis</li>
-        <li>Machine Learning & Predictive Modeling</li>
-        <li>Data Visualization & Business Intelligence</li>
-        <li>Time Series Analysis & Forecasting</li>
-        <li>Data Wrangling & Feature Engineering</li>
-      </ul>
-      <div style="margin-top: 2.2em;">
-        <a href="mailto:subash@example.com" class="contact-btn">Email</a>
-        <a href="https://github.com/SubashKarthick" class="contact-btn">GitHub</a>
-        <a href="https://linkedin.com/in/subashkarthick" class="contact-btn">LinkedIn</a>
-      </div>
-    </section>
-  </main>
-
-  <div id="modal" style="display:none;position:fixed;z-index:1000;top:0;left:0;width:100vw;height:100vh;background:rgba(20,24,34,0.85);align-items:center;justify-content:center;">
-    <div id="modal-content" style="background:#23272f;padding:2.2em 2em 1.6em 2em;border-radius:1.2rem;max-width:400px;max-height:88vh;overflow:auto;box-shadow:0 4px 44px #00c4ff22;position:relative;color:#fff;">
-      <button onclick="closeModal()" style="position:absolute;top:10px;right:16px;font-size:1.4em;background:none;border:none;color:#00c4ff;cursor:pointer;">&times;</button>
-      <div id="modal-inner"></div>
+    <h1>Welcome to My Portfolio</h1>
+    <h2>Projects</h2>
+    <div class="project">
+        <h3>1. Economic Indicator Correlation and Impact Study</h3>
+        <p>This project analyzes the correlation between various economic indicators and their impact on the economy.</p>
     </div>
-  </div>
-
-  <footer style="padding:1.2em 0;text-align:center;color:#909aa8;background:#181c23;">
-    <span>© Subash Karthick 2026 · Predictive Analytics Portfolio | Powered by HTML, CSS, and JS</span>
-  </footer>
-
-  <script>
-    function switchTab(tab) {
-      const projSec = document.getElementById("projectsSection");
-      const aboutSec = document.getElementById("aboutSection");
-      document.getElementById("projectsTab").classList.remove("active");
-      document.getElementById("aboutTab").classList.remove("active");
-      if (tab === "projects") {
-        projSec.hidden = false;
-        aboutSec.hidden = true;
-        document.getElementById("projectsTab").classList.add("active");
-      } else {
-        projSec.hidden = true;
-        aboutSec.hidden = false;
-        document.getElementById("aboutTab").classList.add("active");
-      }
-    }
-
-    const PROJECTS = [
-      {
-        title: "Economic Indicator Correlation and Impact Study",
-        desc: "Comprehensive analysis of correlations between various economic indicators and their impact on market trends, GDP growth, and economic forecasting using advanced statistical methods.",
-        tags: ["Economics", "Predictive Modeling", "Time Series", "Statistical Analysis", "Python"],
-        img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1470&auto=format&fit=crop",
-        links: [
-          { text: "View on GitHub", url: "https://github.com/SubashKarthick/DSC680-PredictiveAnalytics/tree/main/Economic%20Indicator%20Correlation%20and%20Impact%20Study" }
-        ]
-      },
-      {
-        title: "Global Reserve Currency Shifts",
-        desc: "Analysis of global shifts in reserve currency trends, examining factors influencing currency valuations and predicting future reserve currency patterns using machine learning models.",
-        tags: ["Finance", "Prediction", "Currency Analysis", "Machine Learning", "R"],
-        img: "https://images.unsplash.com/photo-1526628652108-aa545b11f5d0?q=80&w=1470&auto=format&fit=crop",
-        links: [
-          { text: "View on GitHub", url: "https://github.com/SubashKarthick/DSC680-PredictiveAnalytics/tree/main/Global%20Reserve%20Currency%20Shifts" }
-        ]
-      },
-      {
-        title: "Global Student Migration",
-        desc: "Predictive analysis of student migration patterns across countries, examining factors like education quality, economy, and immigration policies to forecast future migration trends.",
-        tags: ["Demographics", "Migration Analysis", "Classification", "Forecasting", "Python"],
-        img: "https://images.unsplash.com/photo-1523580494863-6f3031224c94?q=80&w=1470&auto=format&fit=crop",
-        links: [
-          { text: "View on GitHub", url: "https://github.com/SubashKarthick/DSC680-PredictiveAnalytics/tree/main/Global%20Student%20Migration" }
-        ]
-      },
-      {
-        title: "National Childcare Prices",
-        desc: "Predictive modeling of childcare prices across different regions, analyzing factors affecting costs and building models to forecast price trends for policy decisions.",
-        tags: ["Economics", "Price Prediction", "Regression", "Policy Analysis", "SQL"],
-        img: "https://images.unsplash.com/photo-1503454537688-e6876ebb01c7?q=80&w=1470&auto=format&fit=crop",
-        links: [
-          { text: "View on GitHub", url: "https://github.com/SubashKarthick/DSC680-PredictiveAnalytics/tree/main/National%20Childcare%20Prices" }
-        ]
-      },
-      {
-        title: "Pima Indians Diabetes Database Analysis",
-        desc: "Comprehensive predictive analysis using the Pima Indians Diabetes Dataset to build classification models for diabetes prediction, including EDA, feature engineering, and model evaluation.",
-        tags: ["Healthcare", "Classification", "Medical Prediction", "Machine Learning", "Python"],
-        img: "https://images.unsplash.com/photo-1576091160550-112173f7f869?q=80&w=1470&auto=format&fit=crop",
-        links: [
-          { text: "View on GitHub", url: "https://github.com/SubashKarthick/DSC680-PredictiveAnalytics/tree/main/Pima%20Indians%20Diabetes%20Database%20Analysis" }
-        ]
-      }
-    ];
-
-    const ALL_TAGS = [...new Set(PROJECTS.flatMap(p => p.tags))].sort();
-    let currentFilter = "All";
-
-    function renderFilters() {
-      const filterBar = document.getElementById("filterBar");
-      filterBar.innerHTML = `<button class="filter-btn${currentFilter === 'All' ? ' active' : ''}" onclick="filterProjects('All')">All</button>` +
-        ALL_TAGS.map(tag =>
-          `<button class="filter-btn${currentFilter === tag ? ' active' : ''}" onclick="filterProjects('${tag}')">${tag}</button>`
-        ).join('');
-    }
-
-    function renderProjects() {
-      const grid = document.getElementById("projectsGrid");
-      let filtered = currentFilter === "All"
-        ? PROJECTS
-        : PROJECTS.filter(p => p.tags.includes(currentFilter));
-      if (!filtered.length) {
-        grid.innerHTML = `<div style="color:#8b9eb7;grid-column:1/-1;font-size:1.3em;text-align:center;padding:3em 1em;">No projects found for <b>${currentFilter}</b>.</div>`;
-        return;
-      }
-      grid.innerHTML = filtered.map((p, i) => `
-        <div class="project-card" style="animation:fadein 0.5s ${(i+1)*0.06}s both;" tabindex="0"
-          onclick="showModal(${PROJECTS.indexOf(p)})"
-          onkeypress="if(event.key==='Enter'){showModal(${PROJECTS.indexOf(p)})}">
-          <img class="project-img" src="${p.img}" alt="${p.title}"/>
-          <div class="project-content">
-            <div class="project-title">${p.title}</div>
-            <div class="tags">${p.tags.map(tag => `<span class="tag">${tag}</span>`).join(' ')}</div>
-            <div class="project-desc">${p.desc}</div>
-            <div class="project-links">
-              ${p.links.map(link =>
-                `<a href="${link.url}" target="_blank" onclick="event.stopPropagation()">${link.text}</a>`
-              ).join('')}
-            </div>
-          </div>
-        </div>
-      `).join('');
-    }
-
-    const styleSheet = document.createElement("style");
-    styleSheet.innerText = `
-      @keyframes fadein {
-        from { opacity: 0; transform: translateY(28px) scale(.97);}
-        to   { opacity: 1; transform: none;}
-      }
-    `;
-    document.head.appendChild(styleSheet);
-
-    function showModal(idx) {
-      const p = PROJECTS[idx];
-      const inner = document.getElementById('modal-inner');
-      inner.innerHTML = `
-        <img src="${p.img}" alt="${p.title}" style="width:100%;border-radius:12px;margin-bottom:.7em;">
-        <h2 style="color:#00c4ff;margin:0 0 .25em 0;">${p.title}</h2>
-        <div style="margin-bottom:0.7em;">${p.tags.map(tag=>`<span class="tag" style="margin-right:6px;background:#3bd9d9;color:#191f24;padding:2px 8px;">${tag}</span>`).join('')}</div>
-        <div style="color:#bbb;font-size:1.08em;margin-bottom:1.1em;">${p.desc}</div>
-        <div>
-          ${p.links.map(link=>`<a href="${link.url}" style="display:inline-block;margin:0.25em 0.7em 0 0;background:#222;color:#00c4ff;padding:.37em 1.1em;border-radius:9px;font-weight:600;text-decoration:none;border:1px solid #00c4ff;" target="_blank">${link.text}</a>`).join('')}
-        </div>
-      `;
-      document.getElementById('modal').style.display = "flex";
-      document.body.style.overflow = "hidden";
-    }
-
-    function closeModal() {
-      document.getElementById('modal').style.display = "none";
-      document.body.style.overflow = "";
-    }
-    window.onclick = function(e) {
-      if(e.target.id==='modal') closeModal();
-    }
-    window.onkeydown = function(e){
-      if(e.key==="Escape") closeModal();
-    }
-
-    function filterProjects(tag) {
-      currentFilter = tag;
-      renderFilters();
-      renderProjects();
-    }
-
-    renderFilters();
-    renderProjects();
-  </script>
-  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-  <script>
-    particlesJS("particles-js", {
-      "particles": {
-        "number": { "value": 45, "density": { "enable": true, "value_area": 800 }},
-        "color": { "value": "#00c4ff" },
-        "shape": {
-          "type": "polygon",
-          "stroke": { "width": 2, "color": "#3bd9d9" },
-          "polygon": { "nb_sides": 6 }
-        },
-        "opacity": {
-          "value": 0.3,
-          "random": true,
-          "anim": { "enable": true, "speed": 1, "opacity_min": 0.15, "sync": false }
-        },
-        "size": {
-          "value": 36,
-          "random": true,
-          "anim": { "enable": true, "speed": 2, "size_min": 12, "sync": false }
-        },
-        "line_linked": {
-          "enable": true,
-          "distance": 120,
-          "color": "#00c4ff",
-          "opacity": 0.17,
-          "width": 2
-        },
-        "move": {
-          "enable": true,
-          "speed": 1.3,
-          "direction": "none",
-          "random": false,
-          "straight": false,
-          "out_mode": "out",
-          "bounce": false,
-          "attract": { "enable": false, "rotateX": 600, "rotateY": 1200 }
-        }
-      },
-      "interactivity": {
-        "detect_on": "canvas",
-        "events": {
-          "onhover": { "enable": true, "mode": "repulse" },
-          "onclick": { "enable": false },
-          "resize": true
-        },
-        "modes": {
-          "repulse": { "distance": 120, "duration": 0.7 }
-        }
-      },
-      "retina_detect": true
-    });
-  </script>
+    <div class="project">
+        <h3>2. Global Reserve Currency Shifts</h3>
+        <p>This study examines the historical shifts in global reserve currencies and their implications.</p>
+    </div>
+    <div class="project">
+        <h3>3. Global Student Migration</h3>
+        <p>An analysis of global student migration patterns and their socio-economic effects.</p>
+    </div>
+    <div class="project">
+        <h3>4. National Childcare Prices</h3>
+        <p>This project explores the variations in childcare costs across the nation.</p>
+    </div>
+    <div class="project">
+        <h3>5. Pima Indians Diabetes Database Analysis</h3>
+        <p>A data analysis project focused on the Pima Indians Diabetes Database and related health outcomes.</p>
+    </div>
 </body>
 </html>
