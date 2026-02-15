@@ -3,38 +3,115 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio of Subash Karthick</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Subash Karthick's Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+            overflow: hidden;
+        }
+        header {
+            background-color: #00c4ff;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            margin: 0;
+        }
+        h2 {
+            font-weight: normal;
+            font-size: 1.5em;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            margin: 10px 0;
+        }
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #ffffff;
+        }
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+        .project-card {
+            background-color: #1e1e1e;
+            padding: 15px;
+            border-radius: 5px;
+            transition: transform 0.2s;
+        }
+        .project-card:hover {
+            transform: scale(1.05);
+        }
+        .contact {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        .contact a {
+            margin: 0 10px;
+            color: #00c4ff;
+        }
+        .particlejs {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+    </style>
 </head>
 <body>
     <header>
-        <h1>Welcome to My Portfolio</h1>
+        <h1>Subash Karthick</h1>
+        <h2>Big Data Enthusiast</h2>
         <nav>
-            <ul>
-                <li><a href="#about">About Me</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+            <a href="#projects">MSc Projects</a>
+            <a href="#independent-projects">Independent Projects</a>
+            <a href="#about">About</a>
         </nav>
     </header>
-    <section id="about">
-        <h2>About Me</h2>
-        <p>Hello! I am Subash Karthick, a passionate learner and data enthusiast pursuing a degree in Predictive Analytics.</p>
-    </section>
-    <section id="projects">
-        <h2>Projects</h2>
-        <ul>
-            <li>Project 1: Data Analysis with Python</li>
-            <li>Project 2: Predictive Modeling with R</li>
-            <li>Project 3: Machine Learning in Action</li>
-        </ul>
-    </section>
-    <section id="contact">
-        <h2>Contact Me</h2>
-        <p>Email: subash@example.com</p>
-    </section>
-    <footer>
-        <p>&copy; 2026 Subash Karthick</p>
-    </footer>
+    <div id="projects" class="projects">
+        <div class="project-card">
+            <h3>Project Title 1</h3>
+            <p>Brief description of Project 1 related to big data analytics.</p>
+            <button onclick="alert('Details about Project 1');">View Details</button>
+        </div>
+        <div class="project-card">
+            <h3>Project Title 2</h3>
+            <p>Brief description of Project 2 related to big data analytics.</p>
+            <button onclick="alert('Details about Project 2');">View Details</button>
+        </div>
+        <div class="project-card">
+            <h3>Project Title 3</h3>
+            <p>Brief description of Project 3 related to big data analytics.</p>
+            <button onclick="alert('Details about Project 3');">View Details</button>
+        </div>
+        <div class="project-card">
+            <h3>Project Title 4</h3>
+            <p>Brief description of Project 4 related to big data analytics.</p>
+            <button onclick="alert('Details about Project 4');">View Details</button>
+        </div>
+    </div>
+    <div class="contact">
+        <a href="mailto:subash.karthick@example.com">Email</a>
+        <a href="https://github.com/SubashKarthick" target="_blank">GitHub</a>
+        <a href="https://linkedin.com/in/subashkarthick" target="_blank">LinkedIn</a>
+    </div>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        particlesJS.load('particles-js', 'particles.json', function() {
+            console.log('callback - particles.js config loaded');
+        });
+    </script>
+    <div id="particles-js" class="particlejs"></div>
 </body>
 </html>
