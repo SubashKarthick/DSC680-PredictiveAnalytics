@@ -55,4 +55,5 @@ Alongside my industry experience, I am currently a **Master’s student in Predi
 
 ---
 
-## 📂 Repository Structure
+## 🔗 Links
+- **GitHub Profile:** https://github.com/SubashKarthick
