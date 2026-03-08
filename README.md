@@ -37,13 +37,11 @@ Alongside my industry experience, I am currently a **Master’s student in Predi
 - Applied time series models to forecast future trends.
 - Identified seasonality, trend components, and residual behavior.
 
-### Project 6: Applied Machine Learning
-- Designed an end‑to‑end machine learning solution for a real‑world problem.
-- Included data preprocessing, feature engineering, model development, and interpretation.
+### Project 6: Weather Forecasting AI 
+- Real-time weather CLI app (Python/OpenWeatherMap API) 
 
-### Final Project: Predictive Analytics Capstone
-- Comprehensive capstone project combining EDA, modeling, and business interpretation.
-- Delivered actionable insights and data‑driven recommendations.
+### air-pollution-project
+-	Global air pollution EDA, visualization, and risk modeling
 
 ---
 
